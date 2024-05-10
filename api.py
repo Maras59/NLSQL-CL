@@ -2,7 +2,7 @@ from openai import OpenAI
 
 from db import create_db, print_table_schema, runSql
 
-from openai_key import API_KEY
+from openai_key import API_KEY # This key is stored in a file named "openai_key.py" for obvious reasons ive kept this file in the gitignore
 
 SQL_query_maker = OpenAI(api_key=API_KEY)
 
