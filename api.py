@@ -22,12 +22,8 @@ def main():
     while True:
         user_input = input('Enter your query: ')
         print('')
-
-        if check_for_comands(user_input):
-            print(SEPERATOR)
-            continue
-        
-        print(ask_chatgpt(user_input))
+        if not check_for_comands(user_input):
+            print(ask_chatgpt(user_input))
         print(SEPERATOR)
 
 def check_for_comands(user_input):
@@ -66,8 +62,6 @@ def ask_chatgpt(user_input):
     )
 
     return response.choices[0].message.content
-
-
 
 if __name__ == "__main__":
     main()
