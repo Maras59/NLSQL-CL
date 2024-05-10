@@ -2,10 +2,9 @@ from openai import OpenAI
 
 from db import create_db, print_table_schema, runSql
 
-from openai_key import API_KEY # This key is stored in a file named "openai_key.py" for obvious reasons ive kept this file in the gitignore
+from openai_key import API_KEY # This key is stored in a file named "openai_key.py" for obvious reasons ive kept this file in the .gitignore
 
 SQL_query_maker = OpenAI(api_key=API_KEY)
-
 SQL_query_processor = OpenAI(api_key=API_KEY)
 
 SEPERATOR = '------------------------------------------------------------------------------------------------------------'
@@ -15,7 +14,7 @@ def main():
     user_input = ''
     print(SEPERATOR)
     print('This app is used to query the OpenAI API and convert your natural language questions into SQL queries.')
-    print('To view the shape of the database, run the \"show\" command.')
+    print('To view the schema of the database, query \"schema\"')
     print('To exit, type \"exit\".')
     print(SEPERATOR)
 
@@ -33,7 +32,7 @@ def main():
 def check_for_comands(user_input):
     if user_input.lower().strip() == 'exit':
         exit(0)
-    elif user_input.lower().strip() == 'show':
+    elif user_input.lower().strip() == 'schema':
         print_table_schema('Players')
         print('')
         print_table_schema('Matches')
