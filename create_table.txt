@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS Players (
+    player_id INTEGER PRIMARY KEY,
+    username TEXT NOT NULL,
+    steam_id TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Matches (
+    match_id INTEGER PRIMARY KEY,
+    map_name TEXT NOT NULL,
+    total_rounds INTEGER NOT NULL,
+    match_date DATE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS PlayerStatsMatch (
+    player_id INTEGER NOT NULL,
+    match_id INTEGER NOT NULL,
+    kills INTEGER NOT NULL DEFAULT 0,
+    deaths INTEGER NOT NULL DEFAULT 0,
+    assists INTEGER NOT NULL DEFAULT 0,
+    total_damage INTEGER NOT NULL DEFAULT 0,
+    head_shot_percent INTEGER NOT NULL DEFAULT 0,
+    -- IF TRUE(1): WIN, IF FALSE(0): LOSS, IF NULL: TIE
+    win INTEGER,
+    PRIMARY KEY (player_id, match_id),
+    FOREIGN KEY (player_id) REFERENCES Players (player_id),
+    FOREIGN KEY (match_id) REFERENCES Matches (match_id)
+);
