@@ -2,7 +2,8 @@ from openai import OpenAI
 
 from db import create_db, print_table_schema, runSql
 
-from openai_key import API_KEY # This key is stored in a file named "openai_key.py" for obvious reasons ive kept this file in the .gitignore
+from openai_key import API_KEY # This key is in the global string variable 'API_KEY' in a file named "openai_key.py" 
+                               # For obvious reasons I am not icluding this file in the repository
 
 SQL_query_maker = OpenAI(api_key=API_KEY)
 SQL_query_processor = OpenAI(api_key=API_KEY)
@@ -70,4 +71,3 @@ def ask_chatgpt(user_input):
 
 if __name__ == "__main__":
     main()
-
